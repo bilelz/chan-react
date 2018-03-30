@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 import Home from './Home'
 import Login from './Login'
+import Chat from './Chat'
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
@@ -91,6 +92,7 @@ const BasicExample = () => (
           </Typography>
           <Button component={Link} to="/"  color="inherit"> Home </Button>
           <Button component={Link} to="/Login"  color="inherit"> Login </Button>
+          <Button component={Link} to="/chat"  color="inherit"> Chat </Button>
           <Button component={Link} to="/about"  color="inherit"> About </Button>
           <Button component={Link} to="/topics"  color="inherit"> Topics </Button>
          
@@ -98,33 +100,25 @@ const BasicExample = () => (
         </Toolbar>
       </AppBar>
         </Grid>
+        <Grid item xs={3}>
+          <Paper>Topics</Paper>
+        </Grid>
         <Grid item xs={6}>
-          <Paper>xs=6</Paper>
-        </Grid>
-        <Grid item xs={6}>
-          <Paper>xs=6</Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper>xs=3</Paper>
+        <Route exact path="/" component={Home}/>
+        <Route path="/login" component={Login}/>
+        <Route path="/chat" component={Chat}/>
+        <Route path="/about" component={About}/>
+        <Route path="/topics" component={Topics}/>
         </Grid>
         <Grid item xs={3}>
-          <Paper>xs=3</Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper>xs=3</Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper>xs=3</Paper>
+          <Paper>Contacts</Paper>
         </Grid>
     <div>
      
 
       <hr/>
 
-      <Route exact path="/" component={Home}/>
-      <Route path="/login" component={Login}/>
-      <Route path="/about" component={About}/>
-      <Route path="/topics" component={Topics}/>
+      
     </div>
     </Grid>
   </Router>

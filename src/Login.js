@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';
+import Button from 'material-ui/Button';
+import Card, { CardActions, CardContent } from 'material-ui/Card';
+import Typography from 'material-ui/Typography';
+
+
 
 const styles = theme => ({
   container: {
@@ -14,31 +19,36 @@ const styles = theme => ({
     marginRight: theme.spacing.unit,
     width: 200,
   },
-  menu: {
-    width: 200,
-  },
-});
-
-const currencies = [
-  {
-    value: 'USD',
-    label: '$',
-  },
-  {
-    value: 'EUR',
-    label: '€',
-  },
-  {
-    value: 'BTC',
-    label: '฿',
-  },
-  {
-    value: 'JPY',
-    label: '¥',
-  },
-];
+  card: {
+      minWidth: 275,
+      margin: '0 auto'
+    },
+    title: {
+      marginBottom: 16,
+      fontSize: 14,
+    },
+    pos: {
+      marginBottom: 12,
+    },
+  });
+  
 
 class Login extends React.Component {
+
+    
+constructor(props){
+    super(props);
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
   state = {
     name: '',
     age: '',
@@ -52,165 +62,42 @@ class Login extends React.Component {
     });
   };
 
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log(this.state.name)
+  }
+
   render() {
     const { classes } = this.props;
 
     return (
-      <form className={classes.container} noValidate autoComplete="off">
-        <TextField
+      <form className={classes.container} noValidate autoComplete="off" onSubmit={this.handleSubmit}>
+        
+        
+
+        <Card  className={classes.card}>
+        <CardContent>
+          <Typography color="textSecondary">
+            Welcome
+          </Typography>
+          <Typography variant="headline" component="h2">
+            Chan-React app
+          </Typography>
+          <Typography component="p">
+          <TextField
           id="name"
-          label="Login"
+          label="Login (required)"
           className={classes.textField}
           value={this.state.name}
           onChange={this.handleChange('name')}
           margin="normal"
         />
-        <TextField
-          id="uncontrolled"
-          label="Uncontrolled"
-          defaultValue="foo"
-          className={classes.textField}
-          margin="normal"
-        />
-        <TextField
-          required
-          id="required"
-          label="Required"
-          defaultValue="Hello World"
-          className={classes.textField}
-          margin="normal"
-        />
-        <TextField
-          error
-          id="error"
-          label="Error"
-          defaultValue="Hello World"
-          className={classes.textField}
-          margin="normal"
-        />
-        <TextField
-          id="password-input"
-          label="Password"
-          className={classes.textField}
-          type="password"
-          autoComplete="current-password"
-          margin="normal"
-        />
-        <TextField
-          id="multiline-flexible"
-          label="Multiline"
-          multiline
-          rowsMax="4"
-          value={this.state.multiline}
-          onChange={this.handleChange('multiline')}
-          className={classes.textField}
-          margin="normal"
-        />
-        <TextField
-          id="multiline-static"
-          label="Multiline"
-          multiline
-          rows="4"
-          defaultValue="Default Value"
-          className={classes.textField}
-          margin="normal"
-        />
-        <TextField
-          id="helperText"
-          label="Helper text"
-          defaultValue="Default Value"
-          className={classes.textField}
-          helperText="Some important text"
-          margin="normal"
-        />
-        <TextField
-          id="with-placeholder"
-          label="With placeholder"
-          placeholder="Placeholder"
-          className={classes.textField}
-          margin="normal"
-        />
-        <TextField
-          id="textarea"
-          label="With placeholder multiline"
-          placeholder="Placeholder"
-          multiline
-          className={classes.textField}
-          margin="normal"
-        />
-        <TextField
-          id="number"
-          label="Number"
-          value={this.state.age}
-          onChange={this.handleChange('age')}
-          type="number"
-          className={classes.textField}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          margin="normal"
-        />
-        <TextField
-          id="search"
-          label="Search field"
-          type="search"
-          className={classes.textField}
-          margin="normal"
-        />
-        <TextField
-          id="select-currency"
-          select
-          label="Select"
-          className={classes.textField}
-          value={this.state.currency}
-          onChange={this.handleChange('currency')}
-          SelectProps={{
-            MenuProps: {
-              className: classes.menu,
-            },
-          }}
-          helperText="Please select your currency"
-          margin="normal"
-        >
-          {currencies.map(option => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-        <TextField
-          id="select-currency-native"
-          select
-          label="Native select"
-          className={classes.textField}
-          value={this.state.currency}
-          onChange={this.handleChange('currency')}
-          SelectProps={{
-            native: true,
-            MenuProps: {
-              className: classes.menu,
-            },
-          }}
-          helperText="Please select your currency"
-          margin="normal"
-        >
-          {currencies.map(option => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </TextField>
-        <TextField
-          id="full-width"
-          label="Label"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          placeholder="Placeholder"
-          helperText="Full width!"
-          fullWidth
-          margin="normal"
-        />
+          </Typography>
+        </CardContent>
+        <CardActions>
+        <Button type="submit" variant="raised" size="small">Connexion</Button>
+        </CardActions>
+      </Card>
       </form>
     );
   }
