@@ -70,56 +70,53 @@ const Topics = ({ match }) => (
       </li>
     </ul>
 
-    <Route path={`${match.path}/:topicId`} component={Topic}/>
+    <Route path={`${match.path}/:topicId`} component={Topic} />
     <Route exact path={match.path} render={() => (
       <h3>Please select a topic.</h3>
-    )}/>
+    )} />
   </div>
 )
 
 const BasicExample = () => (
   <Router>
-     <Grid container spacing={24}>
-     <Grid item xs={12}>
-          <Paper>xs=12</Paper>
-          <AppBar position="static">
-        <Toolbar>
-          <IconButton className={styles.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="title" color="inherit" className={styles.flex}>
-            Title
+    <Grid container spacing={24}>
+      <Grid item xs={12}>
+        <AppBar position="static">
+          <Toolbar>
+            {/* <IconButton color="inherit" aria-label="Menu">
+              <MenuIcon />
+            </IconButton> */}
+            <Typography variant="title" color="inherit" >
+              Chan-Chat
           </Typography>
-          <Button component={Link} to="/"  color="inherit"> Home </Button>
-          <Button component={Link} to="/Login"  color="inherit"> Login </Button>
-          <Button component={Link} to="/chat"  color="inherit"> Chat </Button>
-          <Button component={Link} to="/about"  color="inherit"> About </Button>
-          <Button component={Link} to="/topics"  color="inherit"> Topics </Button>
-         
-          
-        </Toolbar>
-      </AppBar>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper>Topics</Paper>
-        </Grid>
-        <Grid item xs={6}>
-        <Route exact path="/" component={Home}/>
-        <Route path="/login" component={Login}/>
-        <Route path="/chat" component={Chat}/>
-        <Route path="/about" component={About}/>
-        <Route path="/topics" component={Topics}/>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper>Contacts</Paper>
-        </Grid>
-    <div>
-     
+            <Button component={Link} to="/" color="inherit"> Home </Button>
+            {/* <Button component={Link} to="/Login" color="inherit"> Login </Button> */}
+            {/* <Button component={Link} to="/chat" color="inherit"> Chat </Button> */}
+            {/* <Button component={Link} to="/about" color="inherit"> About </Button> */}
+            {/* <Button component={Link} to="/topics" color="inherit"> Topics </Button> */}
+          </Toolbar>
+        </AppBar>
+      </Grid>
+      <Grid item xs={3}>
+        {/* <Paper>Topics</Paper> */}
+      </Grid>
+      <Grid item xs={6}>
+        <Route exact path="/" component={Login} />
+        <Route path="/hello" component={Home} />
+        <Route path="/chat" component={Chat} />
+        <Route path="/about" component={About} />
+        <Route path="/topics" component={Topics} />
+      </Grid>
+      <Grid item xs={3}>
+        {/* <Paper>Contacts</Paper> */}
+      </Grid>
+      <div>
 
-      <hr/>
 
-      
-    </div>
+        <hr />
+
+
+      </div>
     </Grid>
   </Router>
 )

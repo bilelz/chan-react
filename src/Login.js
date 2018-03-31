@@ -38,16 +38,14 @@ class Login extends React.Component {
     
 constructor(props){
     super(props);
-    this.state = {value: ''};
+    this.state = {name: ''};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
+ 
 
   state = {
     name: '',
@@ -56,22 +54,22 @@ constructor(props){
     currency: 'EUR',
   };
 
-  handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value,
-    });
-  };
+  handleChange(event) {
+    this.setState({name: event.target.value});
+  }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.name)
+    console.log(this.state.name);
+    localStorage.login = this.state.name;
+    this.props.history.push("/chat/");
   }
 
   render() {
     const { classes } = this.props;
 
     return (
-      <form className={classes.container} noValidate autoComplete="off" onSubmit={this.handleSubmit}>
+      <form className={classes.container} autoComplete="off" onSubmit={this.handleSubmit}>
         
         
 
@@ -83,14 +81,15 @@ constructor(props){
           <Typography variant="headline" component="h2">
             Chan-React app
           </Typography>
-          <Typography component="p">
+          <Typography component="div">
           <TextField
           id="name"
           label="Login (required)"
           className={classes.textField}
           value={this.state.name}
-          onChange={this.handleChange('name')}
+          onChange={this.handleChange}
           margin="normal"
+          required
         />
           </Typography>
         </CardContent>
