@@ -7,35 +7,14 @@ import {
 import Home from './Home'
 import Login from './Login'
 import Chat from './Chat'
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
+
 import Grid from 'material-ui/Grid';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
-import IconButton from 'material-ui/IconButton';
-import MenuIcon from 'material-ui-icons/Menu';
 
 
-// const Home = () => (
-//   <div>
-//     <h2>Home</h2>
-//   </div>
-// )
-const styles = {
-  root: {
-    flexGrow: 1,
-  },
-  flex: {
-    flex: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-};
 
 const About = () => (
   <div>
@@ -79,9 +58,9 @@ const Topics = ({ match }) => (
 
 const BasicExample = () => (
   <Router>
-    <Grid container spacing={24}>
-      <Grid item xs={12}>
-        <AppBar position="static">
+    <Grid container spacing={8}>
+      <Grid item md={12} >
+        <AppBar position="static" fullwidth='true'>
           <Toolbar>
             {/* <IconButton color="inherit" aria-label="Menu">
               <MenuIcon />
@@ -97,26 +76,20 @@ const BasicExample = () => (
           </Toolbar>
         </AppBar>
       </Grid>
-      <Grid item xs={3}>
-        {/* <Paper>Topics</Paper> */}
+    
+      <Grid item md={3}>
+            <span>&nbsp;</span>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item md={6}>
         <Route exact path="/" component={Login} />
         <Route path="/hello" component={Home} />
         <Route path="/chat" component={Chat} />
         <Route path="/about" component={About} />
         <Route path="/topics" component={Topics} />
       </Grid>
-      <Grid item xs={3}>
-        {/* <Paper>Contacts</Paper> */}
+      <Grid item md={3}>
+      <span>&nbsp;</span>
       </Grid>
-      <div>
-
-
-        <hr />
-
-
-      </div>
     </Grid>
   </Router>
 )

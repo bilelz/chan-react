@@ -1,10 +1,7 @@
 import React from 'react';
 import List, { ListItem, ListItemText } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
-import ImageIcon from 'material-ui-icons/Image';
 import MoodIcon from 'material-ui-icons/Mood';
-import WorkIcon from 'material-ui-icons/Work';
-import BeachAccessIcon from 'material-ui-icons/BeachAccess';
 import blue from 'material-ui/colors/blue';
 
 class MessagesList extends React.Component {
@@ -15,11 +12,11 @@ class MessagesList extends React.Component {
       <List>
         {this.props.items.map(item => (
           
-          <div>
+          <div key={item.date}>
 
-            {this.props.login == item.author ?
+            {this.props.login === item.author ?
               (
-                <ListItem key={item.date} style={{ textAlign: 'right'}}>
+                <ListItem style={{ textAlign: 'right'}}>
                   <ListItemText primary={item.message} secondary={item.date + ' by ' + item.author + '(you)'}
                     />
                   <Avatar style={{color: '#fff', backgroundColor: blue[500]}}>
@@ -27,7 +24,7 @@ class MessagesList extends React.Component {
                   </Avatar>
                 </ListItem>
               ) : (
-                <ListItem key={item.date}>
+                <ListItem>
                   <Avatar>
                     <MoodIcon />
                   </Avatar>

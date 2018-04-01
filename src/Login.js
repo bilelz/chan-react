@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
@@ -44,9 +43,6 @@ constructor(props){
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-
- 
-
   state = {
     name: '',
     age: '',
@@ -60,7 +56,6 @@ constructor(props){
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.name);
     localStorage.login = this.state.name;
     this.props.history.push("/chat/");
   }
