@@ -76,6 +76,7 @@ class MessagesForm extends React.Component {
                         value={this.props.chat.msg}
                         onChange={this.handleChange}
                         required
+                        autoFocus={true}
                     />
 
 

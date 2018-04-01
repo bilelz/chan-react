@@ -15,7 +15,6 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 
 
-
 const About = () => (
   <div>
     <h2>About</h2>
@@ -56,10 +55,10 @@ const Topics = ({ match }) => (
   </div>
 )
 
-const BasicExample = () => (
+const Chanchat = () => (
   <Router>
     <Grid container spacing={8}>
-      <Grid item md={12} >
+      <Grid item sm={12} >
         <AppBar position="static" fullwidth='true'>
           <Toolbar>
             {/* <IconButton color="inherit" aria-label="Menu">
@@ -77,20 +76,20 @@ const BasicExample = () => (
         </AppBar>
       </Grid>
     
-      <Grid item md={3}>
+      <Grid item sm={3}>
             <span>&nbsp;</span>
       </Grid>
-      <Grid item md={6}>
+      <Grid item sm={6}>
         <Route exact path="/" component={Login} />
         <Route path="/hello" component={Home} />
         <Route path="/chat" component={Chat} />
         <Route path="/about" component={About} />
         <Route path="/topics" component={Topics} />
       </Grid>
-      <Grid item md={3}>
+      <Grid item sm={3}>
       <span>&nbsp;</span>
       </Grid>
     </Grid>
   </Router>
 )
-export default BasicExample
+export default Chanchat

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import MessagesList from './MessagesList'
 import ChatIcon from 'material-ui-icons/ChatBubbleOutline';
@@ -124,9 +123,7 @@ class Chat extends React.Component {
                     <ChatIcon /> Messages ({this.state.messages.length})
             </Typography>
 
-                <ul id="messages-list">
-                    <MessagesList items={this.state.messages} login={localStorage.login} />
-                </ul>
+                <MessagesList items={this.state.messages} login={localStorage.login} />
                 <hr />
 
                 <MessageForm chat={this.state} handleChangeChat={this.handleChange} handleSubmitChat={this.handleSubmit} updateMsgChat={this.updateMsg} />
@@ -135,8 +132,5 @@ class Chat extends React.Component {
     }
 }
 
-Chat.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(Chat);

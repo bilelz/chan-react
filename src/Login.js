@@ -64,7 +64,7 @@ constructor(props){
     const { classes } = this.props;
 
     return (
-      <form className={classes.container} autoComplete="off" onSubmit={this.handleSubmit}>
+      <form className={classes.container} autoComplete="off" fullwidth="true" onSubmit={this.handleSubmit}>
         
         
 
@@ -85,11 +85,12 @@ constructor(props){
           onChange={this.handleChange}
           margin="normal"
           required
+          autoFocus={true}
         />
           </Typography>
         </CardContent>
         <CardActions>
-        <Button type="submit" variant="raised" size="small">Connexion</Button>
+        <Button type="submit" variant="raised" size="small" style={{marginLeft: 'auto'}}>Connexion</Button>
         </CardActions>
       </Card>
       </form>
