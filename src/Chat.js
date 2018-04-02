@@ -10,7 +10,7 @@ import MessageForm from './MessageForm'
 
 
 
-const socket = new WebSocket('ws://localhost:8080');
+const socket = new WebSocket('ws://78.122.107.119:8080');
 const styles = theme => ({
     container: {
         display: 'flex',
