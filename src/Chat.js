@@ -6,12 +6,9 @@ import Typography from 'material-ui/Typography';
 import 'emoji-mart/css/emoji-mart.css'
 import Badge from 'material-ui/Badge';
 
-
 import MessageForm from './MessageForm'
 
-
-const socket = new WebSocket('ws://78.122.107.119:8080');
-// const socket = new WebSocket('ws://192.168.1.55:8080');
+const socket = null;
 const styles = theme => ({
     container: {
         display: 'flex',
@@ -27,9 +24,6 @@ const styles = theme => ({
         width: 200,
     }
 });
-
-
-
 
 class Chat extends React.Component {
 
@@ -47,6 +41,7 @@ class Chat extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.initWS();
     }
 
 
@@ -62,32 +57,30 @@ class Chat extends React.Component {
         });
     }
 
-    init = ({ match }) => (
+    initWS = () => {
+
+        this.socket = new WebSocket('ws://78.122.107.119:8080');
+        // this.socket = new WebSocket('ws://192.168.1.55:8080');
+
         this.setState({
-            name: this.state.match.params.name
+            WebSocketMessage: 'Connecting...'
         })
-    );
 
-    initWS = (socket) => {
-        // this.setState({
-        //     WebSocketMessage: 'Connecting...'
-        // })
-
-        socket.onopen = () => {
+        this.socket.onopen = () => {
             
             this.setState({
                 isWebsocketConnected: true,
                 WebSocketMessage: 'Connected'
             })
 
-            socket.send(JSON.stringify({
+            this.socket.send(JSON.stringify({
                 type: "ADD_USER",
                 name: localStorage.login
             }))
 
         }
 
-        socket.onmessage = (event) => {
+        this.socket.onmessage = (event) => {
             const data = JSON.parse(event.data)
             switch (data.type) {
                 case "ADD_MESSAGE":
@@ -110,7 +103,7 @@ class Chat extends React.Component {
             })
         }
 
-        socket.onerror = (error) => {
+        this.socket.onerror = (error) => {
             this.setState({
                 isWebsocketConnected: false,
                 WebSocketMessage: 'Error (' + error + ')'
@@ -118,7 +111,7 @@ class Chat extends React.Component {
             console.error(error);
         }
 
-        socket.onclose = () => {
+        this.socket.onclose = () => {
             this.setState({
                 isWebsocketConnected: false,
                 WebSocketMessage: 'Connexion closed'
@@ -131,7 +124,7 @@ class Chat extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        socket.send(JSON.stringify({
+        this.socket.send(JSON.stringify({
             type: "ADD_MESSAGE",
             message: this.state.msg,
             author: localStorage.login,
@@ -145,7 +138,6 @@ class Chat extends React.Component {
     }
 
     render() {
-        this.initWS(socket);
         return (
 
             <div>
