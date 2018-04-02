@@ -67,11 +67,9 @@ const Chanchat = () => (
             <Typography variant="title" color="inherit" >
               Chan-Chat
           </Typography>
-            <Button component={Link} to="/" color="inherit"> Home </Button>
-            {/* <Button component={Link} to="/Login" color="inherit"> Login </Button> */}
-            {/* <Button component={Link} to="/chat" color="inherit"> Chat </Button> */}
-            {/* <Button component={Link} to="/about" color="inherit"> About </Button> */}
-            {/* <Button component={Link} to="/topics" color="inherit"> Topics </Button> */}
+            <Button component={Link} to={`${process.env.PUBLIC_URL}/`} color="inherit"> Home </Button>
+            <Button component={Link} to={`${process.env.PUBLIC_URL}/chat`} color="inherit"> Chat </Button>
+            <Button component={Link} to="https://github.com/bilelz/chan-react" color="inherit" target="_blank"> Github </Button>
           </Toolbar>
         </AppBar>
       </Grid>
@@ -80,11 +78,9 @@ const Chanchat = () => (
             <span>&nbsp;</span>
       </Grid>
       <Grid item sm={6}>
-        <Route exact path="/" component={Login} />
-        <Route path="/hello" component={Home} />
-        <Route path="/chat" component={Chat} />
-        <Route path="/about" component={About} />
-        <Route path="/topics" component={Topics} />
+        <Route exact path={`${process.env.PUBLIC_URL}/`} component={Login} />
+        <Route path={`${process.env.PUBLIC_URL}/hello`} component={Home} />
+        <Route path={`${process.env.PUBLIC_URL}/chat`} component={Chat} />
       </Grid>
       <Grid item sm={3}>
       <span>&nbsp;</span>

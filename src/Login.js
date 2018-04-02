@@ -57,7 +57,7 @@ constructor(props){
   handleSubmit(event) {
     event.preventDefault();
     localStorage.login = this.state.name;
-    this.props.history.push("/chat/");
+    this.props.history.push("chat");
   }
 
   render() {
